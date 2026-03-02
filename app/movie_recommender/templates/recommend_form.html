@@ -1,0 +1,12 @@
+<form method="POST">
+  {% csrf_token %}
+  
+  <h2>Select favorite movies:</h2>
+  
+  {% for movie in movies %}
+    <input type="checkbox" name="favorites" value="{{ movie.title }}">
+    {{ movie.title }} <br>
+  {% endfor %}
+  
+  <button type="submit">Get Recommendations</button>
+</form>
