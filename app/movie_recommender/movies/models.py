@@ -5,7 +5,7 @@ class Movie(models.Model):
     movieId = models.IntegerField(unique=True)
     tmdbId = models.IntegerField(null=True, blank=True)
 
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, db_index=True)
     genres = models.TextField(blank=True)
     keywords = models.TextField(blank=True)
     overview = models.TextField(blank=True)
