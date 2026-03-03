@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Your Recommendations</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: white;
+            text-align: center;
+        }
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .movie-card {
+            background-color: #1c1c1c;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+        .btn {
+            background-color: #00d4ff;
+            color: black;
+            padding: 10px 20px;
+            border-radius: 6px;
+            display: inline-block;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Top Recommendations For You 🎬</h1>
+
+{% if recommendations %} <div class="movie-grid">
+{% for movie in recommendations %} <div class="movie-card">
+{% if movie.poster_path %} <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}">
+{% endif %} <h4>{{ movie.title }}</h4> <p style="font-size:12px;">{{ movie.genres }}</p> </div>
+{% endfor %} </div>
+{% else %} <p>No recommendations found. Try selecting different movies.</p>
+{% endif %}
+
+<a href="{% url 'recommend' %}" class="btn">Try Again</a> <a href="{% url 'home' %}" class="btn">Home</a>
+
+</body>
+</html>

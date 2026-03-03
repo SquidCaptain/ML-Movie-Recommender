@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <title>Select Favorite Movies</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            color: white;
+            text-align: center;
+        }
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .movie-card {
+            background-color: #1c1c1c;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .btn {
+            background-color: #00d4ff;
+            color: black;
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: none;
+            cursor: pointer;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Select Your Favorite Movies</h1>
+<p>Choose at least 1 movie</p>
+
+<form method="POST">
+    {% csrf_token %}
+
+```
+<div class="movie-grid">
+    {% for movie in movies %}
+        <div class="movie-card">
+            {% if movie.poster_path %}
+                <img src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" alt="{{ movie.title }}">
+            {% endif %}
+            <label for="favorites">{{ movie.title }}</label>
+            <input type="checkbox" name="favorites" id="favorites" value="{{ movie.title }}">
+        </div>
+    {% endfor %}
+</div>
+
+<button type="submit" class="btn">Get Recommendations</button>
+```
+
+</form>
+
+</body>
+</html>

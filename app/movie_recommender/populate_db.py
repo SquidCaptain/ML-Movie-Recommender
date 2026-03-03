@@ -4,7 +4,7 @@ from movies.models import Movie
 
 df = pd.read_csv("../../data/processed/movies_enriched.csv")
 
-for _, row in tqdm(df.iterrows()):
+for _, row in tqdm(df.iterrows(), total=len(df)):
     Movie.objects.get_or_create(
         movieId=row["movieId"],
         defaults={
