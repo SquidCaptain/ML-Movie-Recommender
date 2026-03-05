@@ -1,12 +1,7 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 
-<html lang="en">
-<head>
-    <title>Your Recommendations</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'movies/style.css' %}">
-</head>
-<body>
+{% block content %}
+
 
 <h1>Top Recommendations For You 🎬</h1>
 
@@ -20,5 +15,4 @@
 
 <a href="{% url 'recommend' %}" class="btn">Try Again</a> <a href="{% url 'home' %}" class="btn">Home</a>
 
-</body>
-</html>
+{% endblock %}

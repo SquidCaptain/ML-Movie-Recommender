@@ -13,10 +13,9 @@ indices = pickle.load(open("../../model/indices.pkl", "rb"))
 tfidf_matrix = sp.load_npz("../../model/tfidf_matrix.npz")
 
 # Build reverse index once
-index_to_movieId = {
+index_to_title = {
     v: k for k, v in indices.items()
 }
-
 
 def recommend_from_favorites(favorite_titles, top_n=10):
     if not favorite_titles:
@@ -34,11 +33,11 @@ def recommend_from_favorites(favorite_titles, top_n=10):
 
     top_indices = np.argsort(sim_scores)[::-1][1:top_n+1]
 
-    recommended_movieIds = [
-        index_to_movieId[i] for i in top_indices
+    recommended_titles = [
+        index_to_title[i] for i in top_indices
     ]
 
-    return Movie.objects.filter(movieId__in=recommended_movieIds)
+    return Movie.objects.filter(title__in=recommended_titles)
 
 
 def recommend_hybrid(user_id, favorite_title, top_n=10):
@@ -57,16 +56,16 @@ def recommend_hybrid(user_id, favorite_title, top_n=10):
     scores = []
 
     for i in candidate_indices:
-        movie_id = index_to_movieId[i]
+        movie_title = index_to_title[i]
 
-        collab_score = svd_model.predict(user_id, movie_id).est
+        collab_score = svd_model.predict(user_id, movie_title).est
         content_score = sim_scores[i]
 
         final_score = 0.5 * content_score + 0.5 * collab_score
-        scores.append((movie_id, final_score))
+        scores.append((movie_title, final_score))
 
     scores.sort(key=lambda x: x[1], reverse=True)
 
-    final_movieIds = [m[0] for m in scores[:top_n]]
+    final_titles = [m[0] for m in scores[:top_n]]
 
-    return Movie.objects.filter(movieId__in=final_movieIds)
+    return Movie.objects.filter(title__in=final_titles)

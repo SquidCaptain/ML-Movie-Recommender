@@ -1,12 +1,8 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 
-<html lang="en">
-<head>
-    <title>Select Favorite Movies</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'movies/style.css' %}">
-</head>
-<body>
+{% block content %}
+
+
 
 <h1>Select Your Favorite Movies</h1>
 
@@ -52,6 +48,4 @@ function selectMovie(title) {
     alert(title + " added!");
 }
 </script>
-
-</body>
-</html>
+{% endblock %}

@@ -1,13 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Movie Recommender</title>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'movies/style.css' %}">
-</head>
-<body>
+{% extends "base.html" %}
 
-```
+{% block content %}
 <h1>🎬 Movie Recommender</h1>
 
 <a href="{% url 'recommend' %}" class="btn">
@@ -27,7 +20,4 @@
         </div>
     {% endfor %}
 </div>
-```
-
-</body>
-</html>
+{% endblock %}

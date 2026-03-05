@@ -1,56 +1,102 @@
 body {
-font-family: Arial, sans-serif;
-background-color: #111;
-color: white;
-text-align: center;
-margin: 0;
-padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: white;
+    margin: 0;
+    padding: 0;
 }
 
 h1, h2 {
-margin-top: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.container {
+    padding: 20px;
+    text-align: center;
 }
 
 .movie-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-gap: 20px;
-padding: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+    padding: 20px;
 }
 
 .movie-card {
-background-color: #1c1c1c;
-padding: 10px;
-border-radius: 10px;
-transition: transform 0.2s ease;
+    background-color: #1c1c1c;
+    padding: 10px;
+    border-radius: 10px;
+    transition: transform 0.2s ease;
 }
 
 .movie-card:hover {
-transform: scale(1.05);
+    transform: scale(1.05);
 }
 
 .movie-card img {
-width: 100%;
-border-radius: 8px;
+    width: 100%;
+    border-radius: 8px;
 }
 
 a {
-color: #00d4ff;
-text-decoration: none;
+    text-decoration: none;
 }
 
 .btn {
-background-color: #00d4ff;
-color: black;
-padding: 10px 20px;
-border-radius: 6px;
-border: none;
-cursor: pointer;
-display: inline-block;
-margin: 20px;
-font-weight: bold;
+    background-color: #00d4ff;
+    color: black;
+    padding: 10px 20px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    display: inline-block;
+    margin: 20px;
+    font-weight: bold;
 }
 
 .btn:hover {
-opacity: 0.8;
+    opacity: 0.8;
+}
+
+/* NAVBAR */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    padding: 15px 40px;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.navbar a:hover {
+    color: #00d4ff;
+}
+
+.logo {
+    font-size: 22px;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.username {
+    margin-left: 20px;
+    margin-right: 15px;
+    font-weight: normal;
+}
+
+.btn-nav {
+    background-color: #00d4ff;
+    color: black !important;
+    padding: 6px 14px;
+    border-radius: 6px;
 }
