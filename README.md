@@ -10,3 +10,9 @@ A Django-based web application that recommends movies to users using a hybrid re
  - Rate Movies: Rate movies from 0.5 to 5 stars.
  - Responsive UI: Grid layout with movie posters and interactive star ratings.
  - Saved Ratings: Ratings persist on account.
+
+ ## App Showcase
+ ![Home Page](./app_showcase/home_page.png)
+ ![Content Recommender](./app_showcase/content_recommend.png)
+ ![User Rating](./app_showcase/ratings.png)
+ ![Hybrid Recommender](./app_showcase/hybrid_recommend.png)
