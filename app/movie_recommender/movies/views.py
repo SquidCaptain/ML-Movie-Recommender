@@ -15,7 +15,7 @@ def register(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            login(request, user)  # auto login after register
+            login(request, user)
             return redirect("home")
     else:
         form = UserCreationForm()
@@ -52,12 +52,7 @@ def search_movies(request):
     if len(query) < 2:
         return JsonResponse([], safe=False)
 
-    movies = (
-        Movie.objects
-        .filter(title__icontains=query)
-        .only("id", "title", "poster_path")
-        [:10]
-    )
+    movies = Movie.objects.filter(title__icontains=query).only("id", "title", "poster_path")[:10]
 
     data = [
         {
@@ -85,3 +80,14 @@ def rate_movie(request):
         )
 
         return JsonResponse({"status": "success"})
+    
+@login_required
+def ratings_page(request):
+    user_ratings = {
+        r.movie.id: r.rating
+        for r in Rating.objects.filter(user=request.user)
+    }
+
+    return render(request, "ratings.html", {
+        "user_ratings": user_ratings
+    })

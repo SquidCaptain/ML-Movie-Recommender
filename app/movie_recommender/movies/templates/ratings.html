@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h1>Rate Movies</h1>
+
+<input type="text" id="search" placeholder="Search movie...">
+
+<div id="results" class="movie-grid"></div>
+
+{{ user_ratings|json_script:"user-ratings-data" }}
+
+<script>
+const USER_RATINGS = JSON.parse(
+    document.getElementById("user-ratings-data").textContent
+);
+
+const STAR_EMPTY = "{% static 'movies/images/star-empty.svg' %}";
+const STAR_HALF = "{% static 'movies/images/star-half.svg' %}";
+const STAR_FULL = "{% static 'movies/images/star-full.svg' %}";
+</script>
+
+<script src="{% static 'movies/ratings.js' %}"></script>
+
+{% endblock %}

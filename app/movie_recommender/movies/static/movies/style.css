@@ -100,3 +100,21 @@ a {
     padding: 6px 14px;
     border-radius: 6px;
 }
+
+.star-rating {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 5px;
+}
+
+.star {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+.star:hover {
+    transform: scale(1.15);
+}
